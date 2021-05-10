@@ -60,7 +60,7 @@ const Register = (props) => {
     if (location.state) {
       // 회원수정페인지 확인하는 if문
       fetch(
-        `http://192.168.0.98:3001/api/user/update/${location.state.idx}`,
+        `http://192.168.0.16:3001/api/user/update/${location.state.idx}`,
         {
           method: "GET",
         }
@@ -164,7 +164,7 @@ const Register = (props) => {
     };
 
     let resData = await post(
-      `http://192.168.0.98:3001/api/register`,
+      `http://192.168.0.16:3001/api/register`,
       reqFormData,
       config
     );
@@ -204,7 +204,7 @@ const Register = (props) => {
     };
 
     post(
-      `http://192.168.0.98:3001/api/user/update/${location.state.idx}`,
+      `http://192.168.0.16:3001/api/user/update/${location.state.idx}`,
       reqFormData,
       config
     ).then((res) => {
@@ -216,15 +216,15 @@ const Register = (props) => {
   };
 
   const handleAddress = () => {
-    let win = window.open("http://192.168.0.98:3000/address", "blank", "width=800, 600");
+    let win = window.open("http://192.168.0.16:3000/address", "blank", "width=800, 600");
   }
 
   const importantPopup = () => {
-    window.open("http://192.168.0.98:3000/ipopup", "새창", "width=800, height=600, resizeable=yes");
+    window.open("http://192.168.0.16:3000/ipopup", "새창", "width=800, height=600, resizeable=yes");
   }
 
   const marketingPopup = () => {
-    window.open("http://192.168.0.98:3000/mpopup", "새창", "width=800, height=600, resizeable=yes");
+    window.open("http://192.168.0.16:3000/mpopup", "새창", "width=800, height=600, resizeable=yes");
   }
 
   const toggleChange = () => {

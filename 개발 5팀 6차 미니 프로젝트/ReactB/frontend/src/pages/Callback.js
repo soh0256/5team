@@ -33,7 +33,7 @@ const Callback = () => {
 
   const handleSubmit = () => {
     // 로그인 버튼을 눌렀을때 동작합니다.
-    fetch("http://192.168.0.98:3001/api/login", {
+    fetch("http://192.168.0.16:3001/api/login", {
       headers: {
         "Content-Type": "application/json", // 파일업로딩이 없으니 json 타입입니다.
         Accept: "application/json",
@@ -106,7 +106,7 @@ const Callback = () => {
 
         <NaverLogin
           clientId="lGFJM1NbKKZ4sBWLypxG"
-          callbackUrl="http://192.168.0.98:3000/management-callback"
+          callbackUrl="http://192.168.0.16:3000/management-callback"
           render={(props) => <div onClick={props.onClick}><img src="/naver-login.PNG" /></div>}
           onSuccess={(res) => responseLogin(res, "naver")}
         />

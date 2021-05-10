@@ -23,7 +23,7 @@ const Forgot = () => {
     }
     //아이디찾기 버튼 눌렀을때 API 요청해서 아이디받아옴
     const findId = (e) => {
-        fetch("http://192.168.0.98:3001/api/findid", {
+        fetch("http://192.168.0.16:3001/api/findid", {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json"
@@ -43,7 +43,7 @@ const Forgot = () => {
     }
     //비밀번호 찾기를 눌렀을때 API 요청해서 데이터를 받아옴
     const findPw = (e) => {
-        fetch("http://192.168.0.98:3001/api/findpw", {
+        fetch("http://192.168.0.16:3001/api/findpw", {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json"

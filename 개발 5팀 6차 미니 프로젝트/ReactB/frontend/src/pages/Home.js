@@ -57,7 +57,7 @@ const Home = () => {
   useEffect(() => {
     // 페이지 로딩시 딱 한번만 실행되는 부분입니다. (로딩시 회원정보들을 불러와야 함.)
     const fetchData = async () => {
-      const response = await fetch("http://192.168.0.98:3001/api/users/", {
+      const response = await fetch("http://192.168.0.16:3001/api/users/", {
         //모든 유저들을 불러오는데, api단에서, params가 없으면 기본적으로 1page로 세팅이 되기때문에 처음 1~10개의 데이터만 요청됩니다.
         method: "GET",
       });
@@ -70,7 +70,7 @@ const Home = () => {
 
   const getPageData = async (page) => {
     // 이부분은 페이지 블록을 클릭했을때 해당 페이지의 정보를 다시 로딩합니다. [2]를 누르면 당연히 2번 페이지가 요청이 되겟죠?
-    const URL = `http://192.168.0.98:3001/api/users/${page}`;
+    const URL = `http://192.168.0.16:3001/api/users/${page}`;
     const response = await fetch(URL, {
       method: "GET",
     });
@@ -108,7 +108,7 @@ const Home = () => {
 
   const deleteClick = (evt) => {
     // 회원정보 삭제 버튼 클릭시 작동합니다.
-    fetch("http://192.168.0.98:3001/api/user/delete", {
+    fetch("http://192.168.0.16:3001/api/user/delete", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -144,7 +144,7 @@ const Home = () => {
       evt.preventDefault();
     }
     const response = await fetch(
-      `http://192.168.0.98:3001/api/user/search/${searchInput}`,
+      `http://192.168.0.16:3001/api/user/search/${searchInput}`,
       {
         method: "GET",
       }

@@ -27,7 +27,7 @@ app.post("/api/login", (req, res) => {
   // /api/login 주소에 post 요청이 날라왓을때 동작합니다.
   const { userId, userPw } = req.body.formData; // react단으로부터 id와 pw를 받아옵니다.
   getRows(
-    `SELECT *FROM ACCOUNTS WHERE USERID = '${userId}' AND USERPASSWORD = '${userPw}'` // ID와 비밀번호를 확인하는 쿼리문을 날립니다.
+    `SELECT *FROM MEMBER WHERE ID = '${userId}' AND PASSWORD = '${userPw}'` // ID와 비밀번호를 확인하는 쿼리문을 날립니다.
   ).then((result) => {
     if (result.length < 1) {
       // 길이가 1 미만이면, 일치하는게 1개도 없다는 것이니, 회원가입해달라는 메세지를 뿌려주면 됩니다.
@@ -48,7 +48,7 @@ app.post("/api/register", upload.single("profile"), (req, res) => {
   const filename = req.file.filename; // multer에서 req.file로 받아줍니다. db에 파일경로를 저장하기 위해서, filename을 받아옵니다.
   getResult(
     //받은 정보로 회원가입 쿼리를 날립니다.
-    `INSERT INTO ACCOUNTS (USERID, USERPASSWORD, USERMAIL, USERPHONE, USERPROFILE, USERNAME, USERFULLADDRESS, USERSUBADDRESS) VALUES ('${userId}', '${userPassword}', '${userMail}', '${userPhone}', '/uploads/${filename}', '${userName}', '${userFullAddress}', '${userSubAddress}')`
+    `INSERT INTO MEMBER (ID, PASSWORD, MAIL, PHONE, PROFILE, NAME, FULLADDRESS, SUBADDRESS) VALUES ('${userId}', '${userPassword}', '${userMail}', '${userPhone}', '/uploads/${filename}', '${userName}', '${userFullAddress}', '${userSubAddress}')`
   ).then((result) => {
     // 성공하면, 회원가입이 됬다는 메세지를 뿌려줍니다.
     res.json({ success: true, msg: "회원 가입이 되셨습니다." });
@@ -57,7 +57,7 @@ app.post("/api/register", upload.single("profile"), (req, res) => {
 
 app.get("/api/users/:page*?", (req, res) => {
   // /api/users/:page get으로 요청하면 작동합니다. 다른점은, :page*? 이부분인데, URL의 Params를 받아옵니다. ex) /api/users/1
-  getRows(`SELECT COUNT(*) FROM ACCOUNTS`).then((result) => {
+  getRows(`SELECT COUNT(*) FROM MEMBER`).then((result) => {
     let page = req.params.page ? req.params.page : 1; // params가 없다면, 1로 자동 세팅하게 해두었습니다.
     let list = 10; // 보여줄 게시글 수
     let startRow = (page - 1) * list + 1; // 1페이지일시 1번째 row부터, 2페이지일시 11번재 row부터, 3페이지일시 21번째 row부터
@@ -72,11 +72,11 @@ app.get("/api/users/:page*?", (req, res) => {
       FROM
         (
           SELECT /*+ INDEX(T1 PK1) */
-              T1.USERID, T1.USERNAME, T1.USERMAIL, T1.USERPHONE, T1.USERPROFILE, T1.USERFULLADDRESS, T1.USERSUBADDRESS
+              T1.PK,T1.ID, T1.NAME, T1.MAIL, T1.PHONE, T1.PROFILE, T1.FULLADDRESS, T1.SUBADDRESS
           FROM
-              ACCOUNTS T1
+            MEMBER T1
           WHERE
-              ROWNUM <= ${endRow} ORDER BY T1.USERID ASC
+              ROWNUM <= ${endRow} ORDER BY T1.PK ASC
         )
       WHERE
           ${startRow} <= ROWNUM
@@ -92,7 +92,7 @@ app.get("/api/user/:idx", (req, res) => {
   const idx = req.params.idx;
   getRows(
     // 조회 쿼리 동일
-    `SELECT USERID, USERMAIL, USERPHONE, USERPROFILE, USERNAME FROM ACCOUNTS WHERE IDX = ${idx}`
+    `SELECT ID, MAIL, PHONE, PROFILE, NAME FROM MEMBER WHERE PK = ${idx}`
   ).then((result) => {
     res.json(result); // 결과 리턴
   });
@@ -100,7 +100,7 @@ app.get("/api/user/:idx", (req, res) => {
 
 app.get("/api/user/update/:idx", (req, res) => {
   const idx = req.params.idx;
-  getRows(`SELECT * FROM ACCOUNTS WHERE IDX = ${idx}`).then((result) => {
+  getRows(`SELECT * FROM MEMBER WHERE PK = ${idx}`).then((result) => {
     res.json(result);
   });
 });
@@ -108,7 +108,7 @@ app.get("/api/user/update/:idx", (req, res) => {
 app.get("/api/user/search/:id", (req, res) => {
   // /api/user/search/:id 이부분은, 이름을 URL Params로 받아와 검색해서 일부분일치하는 결과를 알려줍니다.
   const id = req.params.id;
-  var sql = `SELECT IDX, USERNAME, USERID, USERMAIL, USERPHONE, USERPROFILE FROM ACCOUNTS WHERE USERNAME LIKE '%${id}%'`; // ${id}% 는, 예를들어, "박관" 이라고 검색했을때, "박관" 으로 시작하는 모든것을 조회합니다.
+  var sql = `SELECT PK, NAME, ID, MAIL, PHONE, PROFILE FROM MEMBER WHERE NAME LIKE '%${id}%'`; // ${id}% 는, 예를들어, "박관" 이라고 검색했을때, "박관" 으로 시작하는 모든것을 조회합니다.
 
   getRows(sql).then((result) => {
     res.json(result); // 결과리턴
@@ -137,9 +137,9 @@ app.post("/api/user/update/:idx", upload.single("profile"), (req, res) => {
 
   getResult(
     // REGISTER과 다른점은 치환!
-    `UPDATE ACCOUNTS 
-    SET USERID = '${userId}',USERPASSWORD = '${userPassword}', USERPROFILE = '${filename}', USERMAIL = '${userMail}', USERPHONE = '${userPhone}', USERNAME = '${userName}', USERFULLADDRESS = '${userFullAddress}', USERSUBADDRESS = '${userSubAddress}'
-        WHERE IDX = ${idx}
+    `UPDATE MEMBER 
+    SET ID = '${userId}',PASSWORD = '${userPassword}', PROFILE = '${filename}', MAIL = '${userMail}', PHONE = '${userPhone}', NAME = '${userName}', FULLADDRESS = '${userFullAddress}', SUBADDRESS = '${userSubAddress}'
+        WHERE PK = ${idx}
         `
   ).then((result) => {
     res.json({ success: true, msg: "회원 수정이 되었습니다." });
@@ -150,7 +150,7 @@ app.post("/api/user/delete/", (req, res) => {
   // 회원삭제 부분입니다. indexes string을 받아옵니다.
   const indexString = req.body.indexes;
 
-  getResult(`DELETE FROM ACCOUNTS WHERE IDX In (${indexString})`).then(
+  getResult(`DELETE FROM MEMBER WHERE PK In (${indexString})`).then(
     // In 키워드로 해당 인덱스가 있는 rows를 delete 시켜줍니다.
     (result) => {
       res.json({ success: true, msg : "회원 정보 삭제" });
@@ -163,7 +163,7 @@ app.post("/api/user/delete/", (req, res) => {
 app.post("/api/findid", (req, res) => {
   let userName = req.body.userName;
   let userPhone = req.body.userPhone;
-  getRows(`SELECT USERID FROM ACCOUNTS WHERE USERNAME = '${userName}' AND USERPHONE = '${userPhone}'`).then((result) => {
+  getRows(`SELECT ID FROM MEMBER WHERE NAME = '${userName}' AND PHONE = '${userPhone}'`).then((result) => {
     res.json(result);
   });
 })
@@ -173,7 +173,7 @@ app.post("/api/findpw", (req, res) => {
   let userName = req.body.userName;
   let userPhone = req.body.userPhone;
   let userId = req.body.userId;
-  getRows(`SELECT USERPASSWORD FROM ACCOUNTS WHERE USERNAME = '${userName}' AND USERPHONE = '${userPhone}' AND USERID = '${userId}'`).then((result) => {
+  getRows(`SELECT PASSWORD FROM MEMBER WHERE NAME = '${userName}' AND PHONE = '${userPhone}' AND ID = '${userId}'`).then((result) => {
     res.json(result);
   });
 })
@@ -183,9 +183,9 @@ app.post("/api/naverlogin", (req, res) => {
   let email = req.body.email;
   let name = req.body.name;
 
-  getRows(`SELECT USERID FROM ACCOUNTS WHERE USERNAME = '${name}' AND USERMAIL = '${email}'`).then((result) => {
+  getRows(`SELECT ID FROM MEMBER WHERE NAME = '${name}' AND MAIL = '${email}'`).then((result) => {
     if(result.length < 1) {
-      getResult(`INSERT INTO ACCOUNTS (USERMAIL, USERNAME, USERPASSWORD, USERID) VALUES ('${email}', '${name}', 'naver', 'naver')`).then(result => {
+      getResult(`INSERT INTO MEMBER (MAIL, NAME, PASSWORD, ID) VALUES ('${email}', '${name}', 'naver', 'naver')`).then(result => {
         res.json({success: true, msg: `${name}님 가입완료되었습니다.`});
       })
     }else {
