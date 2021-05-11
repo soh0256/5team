@@ -1,7 +1,7 @@
 import React from 'react'
-import { Redirect} from 'react-router-dom'
+import { Link,Redirect} from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
-
+import "@rmwc/button/styles"; // React Material Button 디자인 CSS 입니다.
 import NaverLogin from 'react-login-by-naver'
 
 import axios from 'axios'
@@ -34,7 +34,7 @@ export default class Login extends React.Component {
 	}
 
 	// 네이버 로그인
-	responseLogin = async(res, type) => {	
+	responseLogin = async(event) => {	
 		const { id, password } = this.state // 데이터 불러옴
 		
 		// 서버에 로그인정보 전달
@@ -64,14 +64,17 @@ export default class Login extends React.Component {
 				</Form.Group>
 
 				<Button type='submit'>로그인</Button>
-
 			</Form>
+
+			<Link to="/register">
+				<Button>회원가입</Button>
+        	</Link>
 			
 			<br/>
 	
 			<NaverLogin
           		clientId="edEf7BinacuDsjWZNbw9"
-				  callbackUrl="http://192.168.0.125:3010/management-callback"
+				  callbackUrl="http://172.30.1.3:3010/management-callback"
           		  render={(props) => <div onClick={props.onClick}><img src="/naver-login.PNG" /></div>}
           		  onSuccess={(res) => {this.responseLogin(res, "naver")}}
           		  onFailure={() => console.log("naver login fail")}

@@ -7,6 +7,10 @@ import Board from './views/Board'
 import Form from './views/Form'
 import View from './views/View'
 import Login from './views/Login'
+import Register from './views/Register' // 회원가입 페이지 Import
+import Address from './views/Address' // 주소검색 페이지
+import Ipopup from './views/Ipopup' // 주소검색 페이지
+import Mpopup from './views/Mpopup' // 주소검색 페이지
 
 import Callback from './views/Callback' //네이버로그인 콜백페이지
 // 인증 모듈
@@ -43,6 +47,10 @@ export default class App extends React.Component {
 							<PrivateRoute path='/view/:id' component={View}/>
 							<Route path='/login' component={Login} exact/>
 							<Route path="/management-callback" component={Callback} exact />
+							<Route exact path="/register" component={Register} />
+							<Route exact path="/address" component={Address} />
+      						<Route exact path="/ipopup" component={Ipopup} />
+      						<Route exact path="/mpopup" component={Mpopup} />
 						</Switch>
 					</Col>
 				</Row>

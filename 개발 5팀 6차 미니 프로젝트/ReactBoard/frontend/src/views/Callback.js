@@ -35,7 +35,7 @@ export default class Login extends React.Component {
 
 
 
-	  responseLogin = async(res, type) => {
+	  responseLogin = async(event) => {
 		
 	  }
 
@@ -63,7 +63,7 @@ export default class Login extends React.Component {
 			<br/>
 			<NaverLogin
           		clientId="edEf7BinacuDsjWZNbw9"
-          		callbackUrl="http://192.168.0.125:3010/management-callback"
+          		callbackUrl="http://172.30.1.3:3010/management-callback"
           		render={(props) => <div onClick={props.onClick}><img src="/naver-login.PNG" /></div>}
           		onSuccess={(res) => {this.responseLogin(res, "naver")}}
           		onFailure={() => console.log("naver login fail")}

@@ -79,7 +79,7 @@ export default class Board extends React.Component {
                 <td>
                   {info.image && (
                     <img
-                      src={`http://192.168.0.125:3000/images/${info.image}`}
+                      src={`http://172.30.1.3:3000/images/${info.image}`}
                       width="100%"
                     />
                   )}

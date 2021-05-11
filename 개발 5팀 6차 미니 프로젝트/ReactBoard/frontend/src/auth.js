@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api = "http://192.168.0.125:3000"; // api 주소 지정
+const api = "http://172.30.1.3:3000"; // api 주소 지정
 
 // 기본 리턴
 export default {

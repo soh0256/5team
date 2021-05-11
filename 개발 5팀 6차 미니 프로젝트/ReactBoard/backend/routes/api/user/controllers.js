@@ -57,6 +57,17 @@ const getResult = (sql) => {
 	});
   };
 
+  exports.register = async (req, res) => {
+	// /api/register 주소에 post요청이 날라왔을때 동작합니다. 다른점은, 프로필사진 업로드때문에, profile은 req.file로 받습니다.
+	const { userId, userPassword, userMail, userPhone, userName, userFullAddress, userSubAddress } = req.body; // 일반 텍스트들은 body에서 똑같이 받습니다.
+	const filename = req.file.filename; // multer에서 req.file로 받아줍니다. db에 파일경로를 저장하기 위해서, filename을 받아옵니다.
+	
+	const db = await oracledb.getConnection(config.db)
+	const query = `INSERT INTO MEMBER (PK, ID, PASSWORD, MAIL, PHONE, PROFILE, NAME, FULLADDRESS, SUBADDRESS) VALUES (MEMBER_SEQ.nextval, '${userId}', '${userPassword}', '${userMail}', '${userPhone}', '/uploads/${filename}', '${userName}', '${userFullAddress}', '${userSubAddress}')`
+	const result = await db.execute(query)
+	db.close() // db close
+  };
+
 // # APIs
 exports.login = async (req, res, next) => {
 	const { id, password } = req.body // 바디에서 데이터를 읽어옴

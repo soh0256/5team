@@ -4,6 +4,6 @@ module.exports = {
   db: {
     user: "REACT",
     password: "REACT",
-    connectSttring: "192.168.0.125/orcl",
+    connectSttring: "172.30.1.3/orcl",
   },
 };
