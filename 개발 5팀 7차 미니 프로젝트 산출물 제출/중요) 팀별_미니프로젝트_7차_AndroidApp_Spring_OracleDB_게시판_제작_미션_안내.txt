@@ -1,0 +1,92 @@
+[미니 프로젝트 팀별 : 미션 안내]
+
+1. MINI PROJECT 제목
+   AndoridApp/SpringBoot/JPA/OracleDB LevelUp 게시판 프로그램 제작
+
+2. 기획의도(Intention of the plan)
+   AndoridApp/SpringBoot/JPA/OracleDB LevelUp 게시판 프로그램 제작
+
+3. 데이터베이스 분석 및 설계
+   AndoridApp/SpringBoot/JPA/OracleDB LevelUp 게시판
+   프로그램 제작에 필요한 데이터베이스구축을 위한 분석 및 설계를 목표로 함.
+
+4. 요구 사항 분석
+   1) 요구 적용 기술
+
+     ① Android OS App [Native App], HTTP 통신(OkHttp3, Retrofit),
+         Glide(이미지 처리), Image Picker(기기에서 이미지 가져오기)
+
+     ② SpringBoot, Maven, Lombok, JPA, Hibernate, Oracle11g DB
+
+     ③ Android OS App [Native App]에서 게시판 글쓰기, 글수정, 글상세보기, 글삭제 등
+        CRUD값을 입력하면, SpringBoot 웹서버 경유해서 Oracle11g DB에 데이터 CRUD
+        처리 되도록 “AndroidApp 게시판 프로그램”을 제작하시기 바랍니다.
+ 
+  2) 개발 요구 기능 : [필수 기능 개발 요구 사항]
+
+     ① 앞서 “1) 요구 적용 기술”들을 연구 및 분석 활용하여,
+         “AndroidApp 게시판 프로그램”을 제작하시기 바랍니다.
+
+     ② 로그인, 로그아웃
+         : 로그인 데이터는 SpringBoot 웹서버 경유해서 Oracle11gDB에 저장된
+           "회원가입" 아이디 인증(확인)될 경우, 로그인할 수 있도록 처리 바랍니다.
+ 
+     ③ 회원가입(프로필 사진 등록, 아이디, 비밀번호, 이름, 이메일, 전화번호 등 포함),
+         회원수정, 회원조회, 회원탈퇴
+     
+     ④ Android OS App [Native App] 에서 입력받은 데이터는
+         SpringBoot 웹서버 경유해서, Oracle11gDB에 저장하도록 처리 바랍니다.
+
+     ⑤ 게시판 글쓰기(이미지 등록 포함), 게시판 글수정,
+         "게시글 목록보기"에서 게시판 글조회,
+         게시글 상세보기(제목 클릭하면 볼수 있게 함), 게시판 글삭제,
+         "게시글 목록보기"에서 앱 하단 페이징 처리(1, 2, 3, ...)
+
+  3) 일정 관리 : Agile Kanban Process(Trello Kanban Board), Gantt Chart
+
+  4) 형상 관리 : Git, Github, Sourcetree
+
+  5) UML : draw.io (또는 StarUML), ERD : draw.io, ERMaster
+
+5. 게시글 작성자와 동일 사용자(인증된 사용자)가
+   게시글을 작성/조회/수정/삭제한 데이터를
+   해당 게시판 DB에 CURD 하도록 적용 하시기 바랍니다.
+
+6. 다음의 산출물들을 "개발 0팀 7차 미니 프로젝트 산출물 제출" 폴더에 넣어서,
+
+   "개발 0팀 7차 미니 프로젝트 산출물 제출.zip"파일로 압축하여,
+
+   이메일 제목을 "개발 0팀 7차 미니 프로젝트 산출물 제출"로 하여
+
+   starhappykcs@nate.com 이메일로 제출해 주시기 바랍니다.
+
+  1) "개발 0팀 7차 미니 프로젝트 산출물 제출" 폴더의 "회의록" 폴더에
+     "KOSMO_77기_개발0팀_회의록(210512)_미니프로젝트.doc" 형식의
+      회의록 자료들을 넣어서 제출합니다.
+
+  2) "KOSMO_77기_개발 0팀_미니프로젝트_기획_분석_설계_보고서.doc"를 제출합니다.
+      (보고서에 UML, ERD, Logical Modeling ERD, Physical Modeling ERD 포함 제출)
+
+  3) "KOSMO_77기_개발 0팀_Unit_Test_보고서.pptx"를 제출합니다.
+     (Dev_Unit_Test_이름기재.pptx 파일을 참고 바람)
+
+  4) "개발 0팀_프로젝트_GanttChart.xlsx"를 제출합니다.
+
+  5) "KOSMO_77기_개발 0팀_Git_Github_활용_Guide_매뉴얼_절차서.doc"와
+     "개발0팀 미니프로젝트 형상관리메모.txt" 파일을 제출합니다.
+
+  6) "KOSMO_77기_개발 0팀_일정관리_형상관리_활용_종합보고서.pptx"를 제출합니다.
+      (개발 0팀_Dev_Schedule_참고활용.pptx 파일을 참고 바람)
+
+  7) 미니 프로젝트 팀별로 최종 완성된 프로젝트 산출물을
+ 
+     "AndroidAppBoard.zip"과 "SpringBootBoard.zip" 파일로
+
+     각각 압축해서 제출하시기 바랍니다.
+
+  8) Database 계정 및 권한, Table, Column, Value, Index, Trigger 등 생성 SQL 구문은
+
+     "중요) example.sql" 파일을 참고하여, "AndroidAppSpringBoard.sql" 파일로 제출하시기 바랍니다.
+
+
+7. 제출 기한 : 2021년 5월 20일(목) 23시 59분까지 제출해 주시기 바랍니다.
