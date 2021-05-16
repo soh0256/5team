@@ -1,0 +1,53 @@
+
+
+* android .xml
+
+1. fragment_board_list.xml , item_board_list.xml , item_board_list_header.xml
+
+=> 게시판 글 리스트 화면
+
+--> fragment_member_list.xml, item_member_list.xml, item_member_list_header.xml
+	회원 리스트 화면 참고
+
+2. fragment_insert_board.xml
+
+=> 게시글 작성 화면
+
+--> fragment_sign_up
+	회원가입 화면 참고
+
+3. fragment_update_board.xml
+
+=> 게시글 수정 화면
+
+--> fragment_modify.xml
+	회원 정보 수정 화면 참고
+
+=======================================================================
+
+* android .java
+
+1. boardInsert
+
+=> 게시글 작성
+
+--> signup
+	회원가입 참고
+
+2. boardlist
+
+=> 게시판 글 리스트
+
+--> memberlist
+	회원 리스트 참고
+
+3. modify (BoardModifyFragment, BoardModifyViewModel)
+
+=> 게시글 수정
+
+--> modify (ModifyFragment, ModifyViewModel)
+	회원 정보 수정 참고
+
+=========================================================================
+
+- BoardRepository.java 작성
