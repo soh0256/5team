@@ -4,7 +4,6 @@ CREATE TABLE BOARD(
   ID VARCHAR2(20),            		-- 아이디
   TITLE VARCHAR2(100),        		-- 게시글제목
   CONTENTS VARCHAR2(1000),     		-- 게시글내용
-  DATES VARCHAR2(20) DEFAULT 0 ,       -- 게시글작성날짜
-  HITS VARCHAR2(20) DEFAULT 0,     		-- 조회수
+  DATES VARCHAR2(20),       -- 게시글작성날짜
   IMAGE VARCHAR2(100) DEFAULT 0				--이미지
 );
