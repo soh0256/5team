@@ -1,0 +1,110 @@
+※ 팀프로젝트 최종 개발 고려 사항 : 1
+
+1. 주제 선정 = 기획 의도를 고려한 개발 주제 선정
+
+2. 일정 관리 : Agile Kanban Process(Trello Kanban Board), Gantt Chart
+
+3. 형상 관리 : Git, Github, Sourcetree, Eclipse Git/Github
+
+4. UML = Draw.io (또는 StarUML)
+
+5. 데이터베이스 구축 및 설계 고려 사항
+
+   1) ERD(Logical, Physical) = Exerd (또는 ERMaster) 활용
+
+   2) 사용자 계정 생성 및 권한 부여
+
+   3) Oracle11g DB 시퀀스 및 CRUD SQL 문법 적용
+
+============================================================================
+
+6. Front-End 개발 고려 사항(Javascript, jQuery, Ajax 등)
+
+   1) Front-End 웹프로그래밍 문법 활용
+
+      HTML5, CSS3, Javascript, jQuery, Ajax, XML, JSON, Bootstrap, 반응형 모바일 웹 등
+
+   2) 학습 교재 참고 : 자바스크립트+제이쿼리 입문
+
+       Page 190 제이쿼리 탐색 선택자, Page 245 이벤트 등록 메서드, Page 290 효과 및 애니메이션 메서드,
+ 
+       Page 322 Ajax로 JSON 데이터 바인딩하기, Page 325 Ajax로 XML 데이터 바인딩하기,
+
+       Page 352 bxSlider 플러그인 활용하기, Page 358 jquery-cookie 플러그인 활용하기,
+
+       Page 362 플러그인 직접 제작하기, Page 370 반응형 웹 UI 만들기
+
+   3) 수업 내용, 학습 교재, 수업 보강 자료, 온라인/오프라인 학습 참고 자료, Javascript, jQuery, Ajax 모바일웹, 반응형 웹 샘플 소스 참고,
+
+       "Front-End_Response_Web_Reference 미션 산출물" 등 참고해서, 연구 개발 진행 바람.
+      
+
+============================================================================
+
+7. Front-End React 개발 고려 사항(React, ES6, JSX, SPA, Component, Redux, Router 등)
+
+   1) Front-End 웹프로그래밍 문법 활용
+
+      React, ES6, JSX, HTML5, CSS3, JSX, Javascript, jQuery, Ajax, XML, JSON,
+
+      Axios, Bootstrp, React-Bootstrap, SPA, Component, Redux, Router 등
+
+    2) 학습 교재 참고
+
+       ① 러닝 리액트(Learning React)
+
+           Page 18 CHAPTER 1 리액트 소개, Page 28 CHAPTER 2 최신 자바스크립트,
+
+           Page 56 CHAPTER 3 자바스크립트를 활용한 함수형 프로그래밍
+
+       ② 초보자를 위한 리액트 200제
+
+           Page 022부터 시작하는 PART1 입문(React.js 시작하기) 내용들 선별적 참고 활용,
+
+           Page 068부터 시작하는 PART2 초급(React.js 기초 다지기) 내용들 선별적 참고 활용,
+
+           map() 함수 활용(Page 015, Page 112), axios 활용(Page194, Page 196, Page 302),
+
+           Promise 활용(Page 201, Page 204), reactstrap 활용(Page 114 ~ Page 176),
+
+           sweetalert2 활용(Page 179 ~ Page 185),
+
+           Page 210부터 시작하는 PART3 중급(React.js 주요 개념 이해하기) 내용들 선별적 참고 활용,
+
+           Page 296부터 시작하는 PART4 활용(React.js 외부 api 활용하기) 내용들 선별적 참고 활용,
+
+           recharts 활용(Page 306 ~ Page 318)
+
+   3) 수업 내용, 학습 교재, 수업 보강 자료, 온라인/오프라인 학습 참고 자료, "React 게시판, React 회원 관리 프로그램" 샘플 소스 참고,
+
+       "React, Express, Node.js, Oracle11gDB 미니프로젝트 산출물" 등 참고해서, 연구 개발 진행 바람.
+      
+
+============================================================================
+
+8. Back-End React 개발 고려 사항(React, ES6, JSX, SPA, Component, Redux, Router, Express, Node.js, Oracle11g DB 등)
+
+   1) Front-End 웹프로그래밍 문법 활용
+
+      React, ES6, JSX, HTML5, CSS3, JSX, Javascript, jQuery, Ajax, XML, JSON,
+
+      Axios, Bootstrp, React-Bootstrap, SPA, Component, Redux, Router,
+
+      Express, Node.js, Oracle11g DB 등
+
+   2) 학습 교재 참고 : 초보자를 위한 리액트 200제
+
+      Page 322부터 시작하는 PART5 실무(개발부터 배포까지 실무 응용) 내용들 선별적 참고 활용,
+
+      Page 322 node.js express 프레임워크 설치하기, Page 323 node 서버 구동하기,
+
+      Page 324 node 서버 api 호출하기, Page 327(실무 109) ~ Page 334(실무 112) node 서버 연결 내용들,
+
+      Page 537(실무 187) ~ Page 556(실무 194) kakao 지도 API 활용 내용들
+
+   3) 수업 내용, 학습 교재, 수업 보강 자료, 온라인/오프라인 학습 참고 자료, "React 게시판, React 회원 관리 프로그램" 샘플 소스 참고,
+
+       "React, Express, Node.js, Oracle11gDB 미니프로젝트 산출물" 등 참고해서, 연구 개발 진행 바람.
+
+
+============================================================================
