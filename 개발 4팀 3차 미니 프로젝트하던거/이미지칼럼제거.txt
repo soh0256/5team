@@ -1,0 +1,3 @@
+show user;
+conn spring/spring; 
+alter table tb_com_user drop column user_img;

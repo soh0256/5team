@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardDAO">
+
+	<resultMap id="boardResult" type="board">
+		<id property="board_no" column="BOARD_NO" />
+		<result property="board_title" column="BOARD_TITLE" />
+		<result property="id" column="ID" />
+		<result property="board_contents" column="BOARD_CONTENTS" />
+		<result property="board_date" column="BOARD_DATE" />
+		<result property="board_hits" column="BOARD_HITS" />
+	</resultMap>
+
+	<insert id="insertBoard" parameterType="board">
+		<![CDATA[
+		INSERT INTO TB_BOARD(BOARD_NO, BOARD_TITLE, ID, BOARD_CONTENTS)
+		VALUES((SELECT NVL(MAX(BOARD_NO), 0) + 1 FROM TB_BOARD),
+		#{board_title}, #{id}, #{board_contents})
+		]]>
+	</insert>
+
+	<update id="updateBoard">
+		<![CDATA[
+		UPDATE TB_BOARD SET
+		BOARD_TITLE = #{board_title},
+		BOARD_CONTENTS = #{board_contents}
+		WHERE BOARD_NO = #{board_no}
+		]]>
+	</update>
+
+	<delete id="deleteBoard">
+		<![CDATA[
+		DELETE TB_BOARD
+		WHERE BOARD_NO = #{board_no}
+		]]>
+	</delete>
+
+	<select id="getBoard" resultType="board">
+		<![CDATA[
+		SELECT *
+		FROM TB_BOARD
+		WHERE BOARD_NO = #{board_no}
+		]]>
+	</select>
+	
+	<update id="viewCount">
+		<![CDATA[
+		UPDATE TB_BOARD
+		SET BOARD_HITS = BOARD_HITS + 1
+		WHERE BOARD_NO = #{board_no}
+		]]>
+	</update>
+
+	<!-- Dynamic SQL 적용(SQL의 중복 문제 해결, 쿼리를 두개 만들 수 있었던것을 하나로 생성) -->
+	<!-- if라는 동적요소를 사용하여 조건에 따른 분기 처리를 함 -->
+	<select id="getBoardList" resultMap="boardResult">
+		SELECT *
+		FROM TB_BOARD
+		WHERE 1 = 1
+		<if test="searchCondition == 'BOARD_TITLE'">
+			AND BOARD_TITLE LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'BOARD_CONTENTS'">
+			AND BOARD_CONTENTS LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		ORDER BY BOARD_NO DESC
+	</select>
+
+</mapper>

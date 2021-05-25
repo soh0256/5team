@@ -1,0 +1,29 @@
+
+1. 8) SpringLevelUp.sql 에 있는 sql문 cmd에서 입력하기
+
+2. SpringLevelUp.zip 파일 압축 해제 후, STS에 Import
+
+3. 프로젝트 우 클릭 - Properties - Java Build Path - Libraries 에서
+   ojdbc6.jar 파일이 오류가 난다면 Remove - Add External JARs... - 
+   본인 컴퓨터에 ojdbc6.jar파일이 있는 경로로 jar파일 가져오기 - Apply
+   
+   (C:\app\user\product\11.2.0\dbhome_1\jdbc\lib에 있을 수 있음)
+
+4. Properties에 Deployment Assembly에 있는 ojdbc6.jar 선택 - Remove - 
+   Add.. - Java Build Path Entries - ojdbc6.jar 선택 - Apply - Apply and Close
+
+5. 프로젝트 구동 되는지 확인해보기 (로그인, 로그아웃, 게시글 입력, 삭제 등등 전부 확인)
+
+
+* 게시글 새 글 등록시, 작성자는 로그인한 해당 ID를 입력해야 새글 등록 가능 
+
+* 회원가입, 게시글 등록이 잘 되었는지 오라클에서 확인 해보기
+  1) sqlplus spring/spring
+  2) select * from TB_COM_USER;
+  3) select * from TB_BOARD;
+
+* 기능 구현시, 깃허브에있는 SpringLevelUp.zip 파일을 내려받고 해당 파일에서 바로 작업을 진행하면
+  구현 도중 다른 사람이 깃허브에 업데이트 할 때 작업이 날아갈 수 있기 때문에 
+  복사본으로 기능 구현 후, 변경사항을 SpringLevelUp 프로젝트에 추가하여 깃허브에 올려야함
+  
+* 깃허브에 올린 후, 형상관리 작성
