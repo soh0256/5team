@@ -30,7 +30,6 @@ CREATE TABLE TB_COM_USER(
   ID VARCHAR2(20),                  		-- 아이디
   PW VARCHAR2(20),                   		-- 패스워드
   EMAIL VARCHAR2(50),                    		-- 이메일
-  USER_IMAGE VARCHAR2(100),               	-- 유저이미지
   NAME VARCHAR2(30),                       	-- 이름
   BIRTH VARCHAR2(20),                     	-- 생일
   PHONE_NUM VARCHAR2(20),                    	-- 전화번호
@@ -40,9 +39,6 @@ CREATE TABLE TB_COM_USER(
   GRADE VARCHAR2(10),         	-- 회원등급
   CONSTRAINT TB_COM_USER_PK PRIMARY KEY(ID)
 );
-
-alter table tb_com_user drop column USER_IMAGE;
-
 
 --게시판정보
 DROP TABLE TB_BOARD CASCADE CONSTRAINT;
@@ -66,12 +62,17 @@ CREATE TABLE TB_REPLY(
   USER_REPLY_NO NUMBER(3),           		-- 댓글일련번호
   USER_REPLY VARCHAR2(500),         		-- 댓글내용
   REPLY_DATE DATE DEFAULT SYSDATE,		-- 댓글날짜
-  GCNT NUMBER(3) DEFAULT 0,		-- 좋아요
-  BCNT NUMBER(3) DEFAULT 0,		-- 싫어요
-  CONSTRAINT TB_REPLY_PK PRIMARY KEY(BOARD_NO, ID, USER_REPLY_NO),
-  CONSTRAINT TB_REPLY_FK_BOARD FOREIGN KEY(BOARD_NO) REFERENCES TB_BOARD(BOARD_NO)
+  CONSTRAINT TB_REPLY_PK PRIMARY KEY(USER_REPLY_NO)
 );
 
+--댓글 좋아요/싫어요
+DROP TABLE CNT CASCADE CONSTRAINT;
+CREATE TABLE CNT(
+  ID VARCHAR2(20),            		-- 유저코드
+  USER_REPLY_NO NUMBER(3),           	-- 댓글일련번호
+  GCNT NUMBER(3) DEFAULT 0,		-- 좋아요
+  BCNT NUMBER(3) DEFAULT 0		-- 싫어요
+);
 
 -- 공지사항
 DROP TABLE NOTICE CASCADE CONSTRAINT;
