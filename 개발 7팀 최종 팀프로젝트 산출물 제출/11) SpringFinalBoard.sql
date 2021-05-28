@@ -84,6 +84,15 @@ CREATE TABLE NOTICE(
   CONSTRAINT TB_NOTICE_PK PRIMARY KEY(NOTICE_NO)
 );
 
+--유저파일테이블
+create table user_file(
+	file_idx number,
+	id varchar2(20),
+	origin_file_name varchar2(400),
+	file_name varchar2(400),
+	file_path varchar2(400),
+	constraint user_file_fk foreign key(id) references tb_com_user(id)
+);
 commit;
 
 
