@@ -18,10 +18,15 @@ CREATE SEQUENCE USER_REPLY_NO;
 
 -- 게시글 시퀀스
 DROP SEQUENCE BOARD_SEQ;
-CREATE SEQUENCE BOARD_SEQ
-INCREMENT BY 1 --증감숫자
-START WITH 1  --시작숫자
-;
+CREATE SEQUENCE BOARD_SEQ;
+
+-- 공지사항 시퀀스
+DROP SEQUENCE NOTICE_SEQ;
+CREATE SEQUENCE NOTICE_SEQ;
+
+-- 좋아요 싫어요 시퀀스
+DROP SEQUENCE CNT_SEQ;
+CREATE SEQUENCE CNT_SEQ;
 
 
 --회원정보
@@ -46,6 +51,7 @@ CREATE TABLE TB_BOARD(
   BOARD_NO VARCHAR2(30),             		-- 게시글번호 seq
   ID VARCHAR2(20),            			-- 아이디 writer
   BOARD_TITLE VARCHAR2(100),        		-- 게시글제목 title
+  MOVIE_TITLE VARCHAR2(100),        		-- 영화제목
   BOARD_CONTENTS VARCHAR2(1000),     	-- 게시글내용 content
   BOARD_DATE DATE DEFAULT SYSDATE,          	-- 게시글작성날짜 regdate
   BOARD_HITS NUMBER DEFAULT 0,     	-- 조회수  cnt
@@ -97,6 +103,10 @@ create table user_file(
 	file_path varchar2(400),
 	constraint user_file_fk foreign key(id) references tb_com_user(id)
 );
+
+-- 관리자 계정
+INSERT INTO TB_COM_USER VALUES('Admin', 'Admin', 'Admin@Admin.com', '관리자', '1960-05-01', '01026264545', '인천 강화군 불은면 중앙로679번길 251103', '23038', '21/06/15', 'Admin'); 
+
 commit;
 
 
